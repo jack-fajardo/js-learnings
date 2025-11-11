@@ -1,0 +1,34 @@
+const words = [
+  "apple", "banana", "apple", "cherry", "banana", "apple",
+  "date", "cherry", "banana", "apple", "date", "banana"
+];
+
+const countWords = words.reduce((collection, val) => {
+  if(!collection[val]) {
+    collection[val] = 0
+  }
+  collection[val] += 1
+  return collection
+}, {})
+
+const convertedObjectToArray = Object.entries(countWords).map(([key, val]) => ({
+  word: key,
+  count: val
+}))
+
+const sortedArray = convertedObjectToArray.sort((a, b) => b.count - a.count)
+const filteredArray = sortedArray.filter((val) => val.count > 1)
+
+const mappedArray = filteredArray.map((val) => {
+  if (val.count >= 4) {
+    val.importance = "high"
+  } else if (val.count == 3) {
+    val.importance = "medium"
+  } else if (val.count == 2) {
+    val.importance = "low"
+  }
+
+  return val;
+})
+
+console.log(mappedArray)

@@ -1,0 +1,23 @@
+const words = ["apple", "banana", "apricot", 
+               "blueberry", "cherry"];
+
+const groupWords = (arr) => {
+    const grouped = arr.reduce((acc, word) => {
+      if (!word) return acc;
+
+      const firstLetter = word[0]
+      
+      if (!acc[firstLetter]) {
+        acc[firstLetter] = []
+      } 
+      
+      acc[firstLetter].push(word)
+
+      return acc;
+    }, {});
+
+
+     return grouped;
+}
+
+console.log(groupWords(words));

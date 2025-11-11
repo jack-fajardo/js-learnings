@@ -1,0 +1,27 @@
+const invoices = [
+  { customer: "Alice", amount: 250 },
+  { customer: "Bob", amount: 400 },
+  { customer: "Alice", amount: 150 },
+  { customer: "Charlie", amount: 300 },
+  { customer: "Bob", amount: 100 }
+];
+
+
+const lastReturn = invoices.reduce((collection, {customer, amount}) => {
+  if(!collection[customer]) {
+    collection[customer] = {
+      total: 0,
+      count: 0
+    }
+  }
+
+  collection[customer] = {
+    total: collection[customer].total + amount,
+    count: collection[customer].count += 1
+  }
+  
+  return collection;
+}, {})
+
+
+console.log(lastReturn)

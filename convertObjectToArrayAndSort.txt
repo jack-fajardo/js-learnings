@@ -1,0 +1,34 @@
+const invoices = [
+  { customer: "Alice", amount: 250 },
+  { customer: "Bob", amount: 400 },
+  { customer: "Alice", amount: 150 },
+  { customer: "Charlie", amount: 300 },
+  { customer: "Bob", amount: 100 }
+];
+
+
+const lastReturn = invoices.reduce((collection, {customer, amount}) => {
+  if(!collection[customer]) {
+    collection[customer] = {
+      total: 0,
+      count: 0
+    }
+  }
+
+    collection[customer].total += amount
+    collection[customer].count += 1
+
+    return collection;
+  
+}, {})
+
+const arrOfObjects = Object.entries(lastReturn)
+const convertedArrOfObjects = arrOfObjects.map(([key, value]) => ({
+  name: key, 
+  total: value.total
+}))
+  
+const sortedArrOfObjects = convertedArrOfObjects.sort((a, b) => b.total - a.total)
+
+console.log(sortedArrOfObjects)
+

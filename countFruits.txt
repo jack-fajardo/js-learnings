@@ -1,0 +1,10 @@
+function countWords(arg) {
+  const reduced = arg.reduce((acc, value) => {  
+    acc[value] = (acc[value] || 0) + 1;
+
+    return acc
+  }, {})
+}
+
+const arr = ["apple", "banana", "apple", "orange", "banana", "apple"];
+countWords(arr);

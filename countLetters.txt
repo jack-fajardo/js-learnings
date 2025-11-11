@@ -1,0 +1,13 @@
+function countLettersInSentence(arg) {
+  const arrOfLetters = arg.split("");
+  const reduced = arrOfLetters.reduce((acc, value) => {  
+    acc[value] = (acc[value] || 0) + 1;
+
+    return acc
+  }, {})
+
+  return reduced;
+}
+
+const input = "Hi! My name is ChatGPT!";
+countLettersInSentence(input);
