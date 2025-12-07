@@ -1,0 +1,55 @@
+# KidsWithCandies
+
+class Solution {
+    public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+        int maxNum = findMaxInt(candies);
+        List kids = new ArrayList<>();
+
+        for (int a = 0 ; a < candies.length ; a++) {
+            if ((candies[a] + extraCandies) >= maxNum) {
+                kids.add(true);
+            } else {
+                kids.add(false);
+            }
+        }
+
+        return kids;
+    }
+
+    public static int findMaxInt(int[] arr) {
+        int maxnum = 0;
+        for(int a = 0 ; a < arr.length ; a++) {
+            if (maxnum < arr[a]) {
+                maxnum = arr[a];
+            }
+        }
+        return maxnum;
+    }
+}
+
+----------------------------------
+
+/**
+ * @param {number[]} candies
+ * @param {number} extraCandies
+ * @return {boolean[]}
+ */
+var kidsWithCandies = function(candies, extraCandies) {
+    const maxInt = candies.reduce((acc, val) => {
+        if (acc < val) {
+            acc = val
+        }
+        return acc;
+    }, 0)
+    let arr = []; 
+
+    for (let a = 0 ; a < candies.length ; a++) {
+        if ((candies[a] + extraCandies) >= maxInt) {
+           arr.push(true) 
+        } else {
+           arr.push(false)
+        }
+    }
+
+    return arr;
+};
